@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Hub - Kanban & Solver</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 md:p-8">
+    <div class="container mx-auto max-w-6xl">
+        <header class="mb-6 text-center">
+            <h1 class="text-4xl font-bold header-title">Productivity Hub</h1>
+        </header>
+        <div class="mb-8 flex justify-center">
+            <button id="tabKanban" class="tab-button active-tab">Kanban Board</button>
+            <button id="tabCalculator" class="tab-button">Equation Solver</button>
+        </div>
+        <div id="kanbanContent" class="tab-content">
+            <div class="content-section"> 
+                <h2 class="text-2xl font-semibold column-title mb-4">Add New Task</h2>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="taskInput" placeholder="Enter task description..." class="task-input flex-grow p-3 rounded-lg focus:outline-none">
+                    <button id="addTaskBtn" class="add-task-btn text-white font-semibold py-3 px-6 rounded-lg">
+                        Add Task
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div id="todo" class="kanban-column"> 
+                    <h3 class="text-xl font-semibold column-title mb-4 border-b-2 border-red-400 pb-2">To Do</h3>
+                    <div id="todoTasks" class="space-y-3 min-h-[200px]">
+                    </div>
+                </div>
+                <div id="inprogress" class="kanban-column"> 
+                    <h3 class="text-xl font-semibold column-title mb-4 border-b-2 border-yellow-400 pb-2">In Progress</h3>
+                    <div id="inprogressTasks" class="space-y-3 min-h-[200px]">
+                    </div>
+                </div>
+                <div id="done" class="kanban-column"> 
+                    <h3 class="text-xl font-semibold column-title mb-4 border-b-2 border-green-400 pb-2">Done</h3>
+                    <div id="doneTasks" class="space-y-3 min-h-[200px]">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="calculatorContent" class="tab-content hidden">
+            <div class="content-section"> 
+                <h2 class="text-2xl font-semibold column-title mb-6 text-center">Custom Equation Solver</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                    <div>
+                        <label for="varD" class="block text-sm font-medium task-text-color mb-1">Variable D:</label>
+                        <input type="number" id="varD" class="task-input w-full p-3 rounded-lg focus:outline-none" value="0">
+                    </div>
+                    <div>
+                        <label for="varSP" class="block text-sm font-medium task-text-color mb-1">Variable SP:</label>
+                        <input type="number" id="varSP" class="task-input w-full p-3 rounded-lg focus:outline-none" value="0">
+                    </div>
+                    <div>
+                        <label for="varCp" class="block text-sm font-medium task-text-color mb-1">Variable Cp:</label>
+                        <input type="number" id="varCp" class="task-input w-full p-3 rounded-lg focus:outline-none" value="0">
+                    </div>
+                    <div>
+                        <label for="varB" class="block text-sm font-medium task-text-color mb-1">Variable B:</label>
+                        <input type="number" id="varB" class="task-input w-full p-3 rounded-lg focus:outline-none" value="0">
+                    </div>
+                </div>
+                
+                <div class="mt-8"> 
+                    <h3 class="text-xl font-semibold column-title mb-4 text-center">Result:</h3> 
+                    <div class="results-display space-y-3 p-6 text-center bg-gray-100 rounded-lg"> 
+                        <p class="task-text-color text-lg">
+                            ((D * (SP - Cp + B + 74) - 7400) / 1.20) / 100 = 
+                            <span id="customEquationResult" class="font-bold text-2xl block mt-2">0</span> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="kanban.js"></script>
+    <script src="calculator.js"></script>
+    <script src="main.js"></script> 
+</body>
+</html>

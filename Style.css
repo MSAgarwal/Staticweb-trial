@@ -1,0 +1,202 @@
+/* General Body and Font Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f8; /* A slightly cooler light gray background */
+    color: #333333; /* Default text color for good contrast */
+    min-height: 100vh;
+    line-height: 1.6;
+    /* Tailwind's p-4 md:p-8 handles body padding */
+}
+
+/* Main Container & Header */
+.header-title {
+    color: #2c3e50; /* Dark grayish blue for header */
+    margin-bottom: 1.5rem; /* Consistent with mb-6 */
+    /* Tailwind classes handle text-4xl, font-bold */
+}
+
+/* Tab Navigation Styles */
+.tab-button {
+    color: #5a67d8; /* Indigo for tab text (Tailwind indigo-600) */
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px; /* Aligns with potential bottom border of tab container */
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    font-weight: 600; /* semi-bold */
+    font-size: 1.05rem; /* Slightly larger than default text */
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 0.375rem 0.375rem 0 0; /* Rounded top corners */
+}
+.tab-button.active-tab {
+    color: #ffffff; /* White text for active tab */
+    background-color: #5a67d8; /* Indigo background for active tab */
+    border-bottom-color: #5a67d8; 
+}
+.tab-button:hover:not(.active-tab) {
+    color: #4c51bf; /* Darker indigo on hover (Tailwind indigo-700) */
+    background-color: #e0e7ff; /* Light indigo background on hover (Tailwind indigo-100) */
+}
+
+/* Tab Content Visibility */
+.tab-content.hidden {
+    display: none;
+}
+
+/* General Card/Section Styling (replaces .glass-effect) */
+.content-section {
+    background-color: #ffffff; /* Clean white background for sections */
+    border-radius: 0.5rem; /* 8px, slightly softer than 0.75rem */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind's shadow-md */
+    padding: 1.5rem; /* p-6 from Tailwind */
+    margin-bottom: 2rem; /* mb-8 from Tailwind */
+}
+
+
+/* Kanban Column Styles */
+.kanban-column {
+    background-color: #eef2f7; /* Lighter gray for column background (e.g., gray-100/200) */
+    border-radius: 0.5rem; /* 8px */
+    min-height: 350px; /* Increased min-height for better drop zones */
+    padding: 1rem; /* p-4 */
+    transition: background-color 0.2s ease-in-out;
+    /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); Tailwind's shadow-sm */
+}
+.kanban-column.drag-over {
+    background-color: #dbeafe !important; /* Tailwind's blue-100 for drag over */
+}
+.kanban-column.column-updated {
+    background-color: #cce5ff !important; /* A distinct light blue flash for updates */
+}
+.column-title { /* Applies to Kanban column titles and Calculator section titles */
+    color: #374151; /* Tailwind's gray-700 for titles */
+    padding-bottom: 0.5rem; /* pb-2 */
+    margin-bottom: 1rem; /* mb-4 */
+    /* Tailwind classes handle text-xl/2xl, font-semibold, border-b */
+}
+
+/* Task Item Styles */
+.task {
+    background-color: #ffffff;
+    border-radius: 0.375rem; /* rounded-md (6px) */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Tailwind's shadow-sm */
+    cursor: grab;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 0.75rem 1rem; /* p-3/4 */
+    /* Tailwind classes in index.html handle flex, justify-between, items-center */
+}
+.task:hover {
+     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind's shadow-md */
+}
+.task:active {
+    cursor: grabbing;
+    transform: scale(1.025); /* Slightly less scaling */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-lg */
+}
+.task.dragging {
+    opacity: 0.7;
+    background-color: #f9fafb; /* Tailwind's gray-50 */
+    border: 1px dashed #9ca3af; /* Tailwind's gray-400 */
+}
+.task-text-color { /* For task text content */
+     color: #1f2937; /* Tailwind's gray-800 for good readability */
+}
+.task-text-done {
+    text-decoration: line-through;
+    color: #6b7280; /* Tailwind's gray-500 for done tasks */
+    opacity: 0.9;
+}
+
+/* Input Field Styles (Kanban task input & Calculator inputs) */
+.task-input { /* General input styling */
+    background-color: #ffffff;
+    border: 1px solid #d1d5db; /* Tailwind's gray-300 */
+    color: #111827; /* Tailwind's gray-900 for input text */
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.625rem 0.75rem; /* py-2.5 px-3 */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* Tailwind classes handle flex-grow, focus:outline-none */
+}
+.task-input::placeholder {
+    color: #9ca3af; /* Tailwind's gray-400 */
+}
+.task-input:focus {
+    border-color: #6366f1; /* Tailwind's indigo-500 */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); /* Focus ring matching indigo */
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+.add-task-btn { /* Primary button style */
+    background-color: #4f46e5; /* Tailwind's indigo-600 */
+    color: white;
+    font-weight: 500; /* medium */
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.625rem 1.25rem; /* py-2.5 px-5 */
+    transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+    border: none; /* Remove border for flat look */
+    /* Tailwind classes handle text-white, font-semibold */
+}
+.add-task-btn:hover {
+    background-color: #4338ca; /* Tailwind's indigo-700 */
+}
+.add-task-btn:active {
+    transform: scale(0.98);
+    background-color: #3730a3; /* Tailwind's indigo-800 */
+}
+
+/* Delete Button Styles (within tasks) */
+.delete-btn {
+    color: #ef4444; /* Tailwind's red-500 */
+    background-color: transparent;
+    border: none;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    padding: 0.25rem; /* p-1 */
+    width: 1.75rem; /* w-7 */
+    height: 1.75rem; /* h-7 */
+    border-radius: 50%; /* Make it circular */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Tailwind classes handle font-bold, text-xl, ml-2 */
+}
+.task:hover .delete-btn {
+    opacity: 1;
+}
+.delete-btn:hover {
+    color: #dc2626; /* Tailwind's red-600 */
+    background-color: #fee2e2; /* Tailwind's red-100 for hover background */
+}
+
+/* Calculator Section Specifics */
+#calculatorContent label {
+    color: #374151; /* Tailwind's gray-700 */
+    margin-bottom: 0.25rem; /* mb-1 */
+    display: block;
+    font-weight: 500; /* medium */
+}
+#calculatorContent .results-display {
+    background-color: #f9fafb; /* Tailwind's gray-50 */
+    padding: 1.25rem; /* p-5 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+}
+#calculatorContent .results-display p {
+    font-size: 1.125rem; /* text-lg */
+    margin-bottom: 0.75rem; /* More space between results */
+    color: #374151; /* Tailwind's gray-700 */
+}
+#calculatorContent .results-display p:last-child {
+    margin-bottom: 0;
+}
+#calculatorContent .results-display span { /* For the actual result numbers */
+    font-weight: 700; /* bold */
+    color: #4f46e5; /* Tailwind's indigo-600 for results */
+    font-size: 1.25rem; /* text-xl */
+    margin-left: 0.25rem; /* ml-1 */
+}
+
+/* Utility for border colors on column headers (from Tailwind) */
+.border-red-400 { border-color: #f87171; } /* red-400 */
+.border-yellow-400 { border-color: #facc15; } /* yellow-400 */
+.border-green-400 { border-color: #4ade80; } /* green-400 */
